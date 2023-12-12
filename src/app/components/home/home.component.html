@@ -1,0 +1,70 @@
+<!--hero header-->
+<section class="py-7 py-md-0 bg-hero" id="home">
+    <div class="container">
+        <div class="row vh-md-100">
+            <div class="col-md-8 col-sm-10 col-12 mx-auto my-auto text-center">
+                <h1 class="heading-black text-capitalize">Genomic Insights: Navigating the Blueprint of Life</h1>
+                <p class="lead py-3">Unlocking the Secrets of Life: Explore, Analyze, and Visualize Genomic Data with
+                    Precision and Ease.</p>
+                <button (click)="scrollToTarget('pricing')" class="btn btn-primary d-inline-flex flex-row align-items-center">
+                    Get started now
+                    <em class="ml-2" data-feather="arrow-right"></em>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--Input section-->
+<section class="py-7 bg-dark section-angle top-right bottom-right" id="pricing">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center mb-5">
+                <h2 class="text-white heading-black">Select an input type</h2>
+            </div>
+        </div>
+        <nav class="nav nav-pills flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedTab = 'uploadFile'"
+                [ngClass]="{'active': selectedTab === 'uploadFile'}">Upload File</a>
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedTab = 'accession'"
+                [ngClass]="{'active': selectedTab === 'accession'}">Enter Accession</a>
+            <a class="flex-sm-fill text-sm-center nav-link" (click)="selectedTab = 'sequence'"
+                [ngClass]="{'active': selectedTab === 'sequence'}">Paste Sequence</a>
+        </nav>
+
+        <div *ngIf="selectedTab === 'uploadFile'" [@fadeInOut]="'in'" class="form-floating">
+            <div class="mb-1 small">Upload a GenBank formatted file or nucleotide sequence file (FASTA format)</div>
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+
+        </div>
+        
+        <div *ngIf="selectedTab === 'accession'" [@fadeInOut]="'in'" class="form-floating">
+            <div class="mb-1 small">Input a GenBank accession number, e.g. NC_000913. GI number not supported.</div>
+            
+            <input class="form-control" placeholder="Accession" id="floatingTextarea1">
+        </div>
+        
+        <div *ngIf="selectedTab === 'sequence'" [@fadeInOut]="'in'" class="form-floating">
+            <div class="mb-1 small">Paste a nucleotide sequence (raw or FASTA format) below</div>
+            
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+            style="height: 200px"></textarea>
+        </div>
+        
+        <div class="mt-3">
+            <button type="button" class="btn btn-secondary mr-3 btn-sm">Reset</button>
+            <button type="button" class="btn btn-primary btn-sm">Submit</button>
+        </div>
+
+    </div>
+</section>
